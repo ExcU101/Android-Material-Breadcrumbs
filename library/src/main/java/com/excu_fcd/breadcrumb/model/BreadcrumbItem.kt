@@ -1,4 +1,4 @@
-package com.excu_fcd.breadcrumbs
+package com.excu_fcd.breadcrumb.model
 
 data class BreadcrumbItem(
     val title: String,

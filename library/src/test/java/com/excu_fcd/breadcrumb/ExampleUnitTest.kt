@@ -1,4 +1,4 @@
-package com.excu_fcd.breadcrumbs
+package com.excu_fcd.breadcrumb
 
 import org.junit.Test
 

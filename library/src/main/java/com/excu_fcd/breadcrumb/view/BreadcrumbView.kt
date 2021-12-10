@@ -1,4 +1,4 @@
-package com.excu_fcd.breadcrumbs
+package com.excu_fcd.breadcrumb.view
 
 import android.content.Context
 import android.graphics.Color
@@ -11,11 +11,12 @@ import android.view.View.MeasureSpec.makeMeasureSpec
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
+import com.excu_fcd.breadcrumb.R
+import com.google.android.material.textview.MaterialTextView
 
 class BreadcrumbView : LinearLayout {
 
@@ -23,8 +24,8 @@ class BreadcrumbView : LinearLayout {
 
     constructor(context: Context, attr: AttributeSet) : super(context, attr)
 
-    private val title: TextView = TextView(context).apply {
-        text = "Sex"
+    private val title: MaterialTextView = MaterialTextView(context).apply {
+        text = "Sample"
         setTextColor(Color.BLACK)
         ellipsize = TextUtils.TruncateAt.END
         isClickable = true
@@ -33,7 +34,6 @@ class BreadcrumbView : LinearLayout {
         maxLines = 1
         isAllCaps = true
         textSize = 14F
-        setBackgroundResource(R.drawable.breadcrumb_text_background)
     }
 
     private val textMargins = MarginLayoutParams(LayoutParams(WRAP_CONTENT, WRAP_CONTENT))

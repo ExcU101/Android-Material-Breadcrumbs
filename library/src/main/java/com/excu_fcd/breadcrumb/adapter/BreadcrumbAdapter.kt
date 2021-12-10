@@ -1,9 +1,12 @@
-package com.excu_fcd.breadcrumbs
+package com.excu_fcd.breadcrumb.adapter
 
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.excu_fcd.breadcrumb.R
+import com.excu_fcd.breadcrumb.model.BreadcrumbItem
+import com.excu_fcd.breadcrumb.view.BreadcrumbView
 
 class BreadcrumbAdapter : RecyclerView.Adapter<BreadcrumbViewHolder>() {
 

@@ -1,20 +1,19 @@
 package com.excu_fcd.breadcrumbs
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.excu_fcd.breadcrumb.view.applyToAdapter
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val breadcrumbs = mutableListOf<BreadcrumbItem>()
+        val breadcrumbs = mutableListOf<com.excu_fcd.breadcrumb.model.BreadcrumbItem>()
 
         repeat(10) {
             breadcrumbs.add(
-                BreadcrumbItem(
+                com.excu_fcd.breadcrumb.model.BreadcrumbItem(
                     "Directory $it",
                     isArrowEnabled = true,
                     isSelected = false
@@ -22,21 +21,9 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        val bc = findViewById<BreadcrumbLayout>(R.id.bc).apply {
+        findViewById<com.excu_fcd.breadcrumb.view.BreadcrumbLayout>(R.id.bc).apply {
             applyToAdapter {
                 set(breadcrumbs)
-            }
-        }
-        val fab = findViewById<ExtendedFloatingActionButton>(R.id.fab)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val bc = findViewById<BreadcrumbLayout>(R.id.bc)
-        
-        bc.find(0)?.let {
-            it.breadcrumb.setOnClickListener {
-                Toast.makeText(applicationContext, "Test", Toast.LENGTH_SHORT).show()
             }
         }
     }

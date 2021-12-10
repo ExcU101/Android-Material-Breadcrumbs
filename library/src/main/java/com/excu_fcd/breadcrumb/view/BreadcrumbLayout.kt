@@ -1,4 +1,4 @@
-package com.excu_fcd.breadcrumbs
+package com.excu_fcd.breadcrumb.view
 
 import android.content.Context
 import android.graphics.Color
@@ -19,11 +19,10 @@ class BreadcrumbLayout : FrameLayout {
 
     private var needToMeasure: Boolean = false
 
-    private val adapter = BreadcrumbAdapter()
+    private val adapter = com.excu_fcd.breadcrumb.adapter.BreadcrumbAdapter()
     private val recycler = RecyclerView(context)
 
     init {
-        setBackgroundColor(Color.parseColor("#212121"))
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recycler.setHasFixedSize(true)
@@ -33,15 +32,6 @@ class BreadcrumbLayout : FrameLayout {
 
     // Here, we're measuring size of view!
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-//        val desireWidth = getSize(widthMeasureSpec) + paddingEnd + paddingStart
-//        val desireHeight =
-//            (resources.displayMetrics.density.toInt() * 48) + paddingTop + paddingBottom
-//
-//        val width = makeMeasureSpec(desireWidth, getMode(widthMeasureSpec))
-//        val height = makeMeasureSpec(desireHeight, getMode(heightMeasureSpec))
-//        needToMeasure = false
-//        setMeasuredDimension(width, height)
-
         super.onMeasure(widthMeasureSpec, makeMeasureSpec(dp(48), EXACTLY))
     }
 
@@ -49,26 +39,22 @@ class BreadcrumbLayout : FrameLayout {
         return recycler.layoutManager as LinearLayoutManager?
     }
 
-    fun getAdapter(): BreadcrumbAdapter {
+    fun getAdapter(): com.excu_fcd.breadcrumb.adapter.BreadcrumbAdapter {
         return adapter
     }
 
-    fun setBreadcrumbs(list: List<BreadcrumbItem>) {
+    fun setBreadcrumbs(list: List<com.excu_fcd.breadcrumb.model.BreadcrumbItem>) {
         adapter.set(list)
     }
 
-    fun get() {
-
-    }
-
-    fun find(index: Int): BreadcrumbViewHolder? {
-        return recycler.findViewHolderForAdapterPosition(index) as BreadcrumbViewHolder?
+    fun find(index: Int): com.excu_fcd.breadcrumb.adapter.BreadcrumbViewHolder? {
+        return recycler.findViewHolderForAdapterPosition(index) as com.excu_fcd.breadcrumb.adapter.BreadcrumbViewHolder?
     }
 
     private fun dp(value: Int) = resources.displayMetrics.density.toInt() * value
 
     fun getBreadcrumb(index: Int): BreadcrumbView? =
-        (recycler.findViewHolderForAdapterPosition(index) as BreadcrumbViewHolder?)?.breadcrumb?.logIt()
+        (recycler.findViewHolderForAdapterPosition(index) as com.excu_fcd.breadcrumb.adapter.BreadcrumbViewHolder?)?.breadcrumb
 
 }
 
@@ -78,11 +64,6 @@ inline fun BreadcrumbLayout.getBreadcrumb(index: Int, block: BreadcrumbView.() -
     }
 }
 
-inline fun BreadcrumbLayout.applyToAdapter(block: BreadcrumbAdapter.() -> Unit) {
+inline fun BreadcrumbLayout.applyToAdapter(block: com.excu_fcd.breadcrumb.adapter.BreadcrumbAdapter.() -> Unit) {
     block(getAdapter())
-}
-
-fun <T : Any> T.logIt(): T {
-    Log.v("Loggable", "$this")
-    return this
 }

@@ -4,26 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#212121"
-    tools:context=".MainActivity">
+    tools:context="com.excu_fcd.breadcrumbs.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.excu_fcd.breadcrumbs.BreadcrumbLayout
+        <com.excu_fcd.breadcrumb.view.BreadcrumbLayout
             android:id="@+id/bc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        style="@style/ThemeOverlay.Material3.FloatingActionButton.Surface"
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:gravity="center"
-        android:text="Fuck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
